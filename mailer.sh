@@ -11,13 +11,14 @@ if [ "${STARTTLS}" == "" ]; then STARTTLS=YES; fi;
 if [ "${SUBJECT}" == "" ]; then SUBJECT="No Subject"; fi;
 if [ "${FROM_NAME}" == "" ]; then FROM_NAME="${FROM_EMAIL}"; else FROM_NAME="=?utf-8?B?"$(echo "${FROM_NAME}" | base64)"?="; fi;
 
-cat > /etc/ssmtp/ssmtp.conf << EOF
+CONFIGFILE="/etc/ssmtp/ssmtp.conf"
+cat > $CONFIGFILE << EOF
 mailhub=${SMTP_HOST}
 UseTLS=${TLS}
 UseSTARTTLS=${STARTTLS}
-AuthUser=${SMTP_USER}
-AuthPass=${SMTP_PASS}
 EOF
+[ -n "$SMTP_USER" ] && echo "AuthUser=${SMTP_USER}" >> $CONFIGFILE
+[ -n "$SMTP_PASS" ] && echo "AuthPass=${SMTP_PASS}" >> $CONFIGFILE
 
 usermod -c "${FROM_NAME}" root
 
