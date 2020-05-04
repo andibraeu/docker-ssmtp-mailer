@@ -5,8 +5,6 @@
 : ${SMTP_HOST:?Variable SMTP_HOST is required!}
 
 : ${MESSAGE:-""}
-: ${SMTP_USER:-""}
-: ${SMTP_PASS:-""}
 
 if [ "${TLS}" == "" ]; then TLS=YES; fi;
 if [ "${STARTTLS}" == "" ]; then STARTTLS=YES; fi;
