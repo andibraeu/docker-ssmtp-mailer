@@ -45,3 +45,5 @@ docker run -i \
   -e STARTTLS=NO \
   ...
 ```
+
+To disable authentication, just do not set SMTP_USER and SMTP_PASS.
