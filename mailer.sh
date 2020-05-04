@@ -2,11 +2,11 @@
 
 : ${TO:?Variable TO is required!}
 : ${FROM_EMAIL:?Variable FROM_EMAIL is required!}
-: ${SMTP_USER:?Variable SMTP_USER is required!}
-: ${SMTP_PASS:?Variable SMTP_PASS is required!}
 : ${SMTP_HOST:?Variable SMTP_HOST is required!}
 
 : ${MESSAGE:-""}
+: ${SMTP_USER:-""}
+: ${SMTP_PASS:-""}
 
 if [ "${TLS}" == "" ]; then TLS=YES; fi;
 if [ "${STARTTLS}" == "" ]; then STARTTLS=YES; fi;
